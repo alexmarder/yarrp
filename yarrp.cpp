@@ -317,7 +317,7 @@ main(int argc, char **argv) {
         auto end = std::chrono::system_clock::now();
         std::chrono::duration<double> elapsed_seconds = end-start;
         std::cout << "Time: " << elapsed_seconds.count() << "\n";
-        double pps = ((double) ((stats->count * (config.maxttl - config.minttl)))) / ((double) elapsed_seconds.count());
+        double pps = ((double) stats->count) / ((double) elapsed_seconds.count());
         printf("PPS: %.2f\n", pps);
     }
     if (config.receive) {
