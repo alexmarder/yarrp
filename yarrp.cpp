@@ -305,6 +305,7 @@ main(int argc, char **argv) {
     }
     if (config.probe) {
         debug(LOW, ">> Probing begins.");
+        auto start = std::chrono::system_clock::now();
         if (config.entire or config.inlist) {
             /* individual IPs from input file or entire mode */
             loop(&config, iplist, trace, tree, stats);
@@ -312,6 +313,9 @@ main(int argc, char **argv) {
             /* using subnets from args */
             loop(&config, subnetlist, trace, tree, stats);
         }
+        auto end = std::chrono::system_clock::now();
+        std::chrono::duration<double> elapsed_seconds = end-start;
+        std::cout << "elapsed time: " << elapsed_seconds.count();
     }
     if (config.receive) {
         debug(LOW, ">> Waiting " << SHUTDOWN_WAIT << "s for outstanding replies...");
