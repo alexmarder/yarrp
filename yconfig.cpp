@@ -205,7 +205,7 @@ YarrpConfig::parse_opts(int argc, char **argv) {
         if ( (output)[0] == '-')
             out = stdout;
         else
-            out = fopen(output, "a");
+            out = fopen(output, "w");
         if (out == NULL)
             fatal("%s: cannot open %s: %s", __func__, output, strerror(errno));
     }
