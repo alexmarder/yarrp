@@ -317,7 +317,8 @@ main(int argc, char **argv) {
         auto end = std::chrono::system_clock::now();
         std::chrono::duration<double> elapsed_seconds = end-start;
         std::cout << "Time: " << elapsed_seconds.count() << "\n";
-        printf("PPS: %.2f\n", ((double) (iplist->count() * (config.maxttl - config.minttl))) / elapsed_seconds.count());
+        double pps = ((double) ((iplist->count() * (config.maxttl - config.minttl)))) / ((double) elapsed_seconds.count());
+        printf("PPS: %.2f\n", pps;
     }
     if (config.receive) {
         debug(LOW, ">> Waiting " << SHUTDOWN_WAIT << "s for outstanding replies...");
